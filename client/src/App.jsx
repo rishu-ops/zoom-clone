@@ -1,10 +1,9 @@
 import React from "react";
+import Signin from "./components/singin/Signin";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-center">Hello world!</h1>
-    </div>
+     <Signin/>
   );
 };
 
