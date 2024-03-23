@@ -1,0 +1,61 @@
+import React from 'react'
+import { bannersinginImage } from '../../assets'
+
+const Signin = () => {
+    return (
+        <div className='w-full h-[100vh] flex '>
+
+            <div className='w-[45%]  flex justify-center items-center'>
+                <img className='h-[300px]'
+                 src={bannersinginImage} alt="image" />
+            </div>
+
+            <div className='mt-12 w-[50%] '>
+
+                <div className='text-black text-4xl font-bold text-center'>
+                    <p> Sign In </p>
+                </div>
+
+                <div className='mt-10 flex justify-center '>
+                    <form className='flex-col text-center w-[80%]'>
+                        <input type="text" placeholder='Email-address'
+                            className='border border-gray-500 rounded-lg p-3 w-full mb-5' />
+                        <input type="text" placeholder='Password'
+                            className='border border-gray-500 rounded-lg p-3 w-full mb-10' /> {/* Using w-full for child inputs */}
+                        <div className='flex justify-between text-blue-900 w-full  mb-3'>
+                            <p>Forgot password?</p>
+                            <p>Help</p>
+                        </div>
+                        <button className='bg-blue-600 w-full p-2 rounded-lg text-xl text-white mb-4'>
+                            Sign In
+                        </button>
+
+                        <div className=''>
+                            <p className='text-left text-blue-600 w-[80%]'>By signing in, I agree to the Zoom's Privacy Statement and Terms of Service.</p>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div className='mt-10 flex flex-col items-center justify-center gap-8 mb-10'>
+                    <p>Or sign in with</p>
+                    <div className='flex justify-center gap-20' >
+                        <img src="" alt="1" />
+                        <img src="" alt="2" />
+                        <img src="" alt="3" />
+                        <img src="" alt="4" />
+                    </div>
+                </div>
+                <div className=''>
+                    <p className='text-sm mx-auto w-[70%]'>
+                        Zoom is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default Signin
