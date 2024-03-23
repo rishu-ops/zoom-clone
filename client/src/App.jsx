@@ -1,14 +1,12 @@
+import React from 'react'
 
-
-import './App.css'
-
-function App() {
-
-
+const App = () => {
   return (
-    <>
-    <h1>fdsf</h1>
-    </>
+    
+    <div>
+    
+    </div>
+
   )
 }
 
