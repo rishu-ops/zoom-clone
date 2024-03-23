@@ -3,14 +3,15 @@ import { bannersinginImage } from '../../assets'
 
 const Signin = () => {
     return (
-        <div className='w-full h-[100vh] flex '>
+        <div className='w-full h-screen flex lg:flex-row flex-col md:flex-row '>
 
-            <div className='w-[45%]  flex justify-center items-center'>
-                <img className='h-[300px]'
+            <div className=' lg:w-[45%] md:-w-[45%] w-100% flex justify-center items-center'>
+
+                <img className='lg:h-[300px] md:h-[300px] h-[200px]'
                  src={bannersinginImage} alt="image" />
             </div>
 
-            <div className='mt-12 w-[50%] '>
+            <div className='mt-12  lg:w-[50%] md:-w-[50%] w-100% '>
 
                 <div className='text-black text-4xl font-bold text-center'>
                     <p> Sign In </p>
@@ -26,7 +27,7 @@ const Signin = () => {
                             <p>Forgot password?</p>
                             <p>Help</p>
                         </div>
-                        <button className='bg-blue-600 w-full p-2 rounded-lg text-xl text-white mb-4'>
+                        <button className='bg-blue-600 w-full p-2 rounded-lg text-xl text-white mb-4 hover:bg-blue-500'>
                             Sign In
                         </button>
 
@@ -47,7 +48,7 @@ const Signin = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <p className='text-sm mx-auto w-[70%]'>
+                    <p className='text-sm mx-auto w-[80%]'>
                         Zoom is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
                     </p>
                 </div>
