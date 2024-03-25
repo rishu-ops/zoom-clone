@@ -3,16 +3,19 @@ import banner from "../../assets/banner.png";
 import * as yup from "yup";
 
 function Signup() {
-  const userDetails = {
+  const [user, setUser] = useState({
     fName: "",
     lName: "",
     email: "",
     password: "",
+  });
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const [user, setUser] = useState(userDetails);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
+    console.log("Form Submitted", user);
   };
   return (
     <div className=" lg:flex h-screen items-center lg:mx-16">
@@ -32,21 +35,33 @@ function Signup() {
             className="border border-orange-900 p-3 my-2 rounded-xl"
             type="text"
             placeholder="First name"
+            name="fName"
+            value={user.fName}
+            onChange={handleChange}
           />
           <input
             className="border border-orange-900 p-3 my-2 rounded-xl"
             type="text"
             placeholder="Last name"
+            name="lName"
+            value={user.lName}
+            onChange={handleChange}
           />
           <input
             className="border border-orange-900 p-3 my-2 rounded-xl"
             type="email"
             placeholder="Enter email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
           />
           <input
             className="border border-orange-900 p-3 my-2 rounded-xl"
             type="password"
             placeholder="Password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
           />
           <button
             className="border bg-slate-200 p-3 my-2 rounded-xl text-gray-600 font-bold"
