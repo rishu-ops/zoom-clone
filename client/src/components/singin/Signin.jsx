@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { bannersinginImage } from '../../assets'
 
 const Signin = () => {
+
+    const [user, setUser] = useState({
+        
+        email: "",
+        password: "",
+
+      });
+
+      const handleChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form Submitted", user);
+      };
+      
     return (
-        <div className='w-full h-screen flex lg:flex-row flex-col md:flex-row '>
+        <div className='w-full h-screen flex lg:flex-row flex-col md:flex-row mt-10 '>
 
             <div className=' lg:w-[45%] md:-w-[45%] w-100% flex justify-center items-center'>
 
@@ -18,16 +35,28 @@ const Signin = () => {
                 </div>
 
                 <div className='mt-10 flex justify-center '>
-                    <form className='flex-col text-center w-[80%]'>
-                        <input type="text" placeholder='Email-address'
+                    <form  className='flex-col text-center w-[80%]' onSubmit={handleSubmit}>
+                        <input
+                         type="text"
+                         placeholder='Email-address'
+                         name="email"
+                         value={user.email}
+                         onChange={handleChange}
+
                             className='border border-gray-500 rounded-lg p-3 w-full mb-5' />
-                        <input type="text" placeholder='Password'
+                        <input 
+                        type="text" 
+                        placeholder='Password'
+                        name="password"
+                        value={user.password}
+                        onChange={handleChange}
+
                             className='border border-gray-500 rounded-lg p-3 w-full mb-10' /> {/* Using w-full for child inputs */}
                         <div className='flex justify-between text-blue-900 w-full  mb-3'>
                             <p>Forgot password?</p>
                             <p>Help</p>
                         </div>
-                        <button className='bg-blue-600 w-full p-2 rounded-lg text-xl text-white mb-4 hover:bg-blue-500'>
+                        <button type='submit' className='bg-blue-600 w-full p-2 rounded-lg text-xl text-white mb-4 hover:bg-blue-500'>
                             Sign In
                         </button>
 
@@ -56,6 +85,7 @@ const Signin = () => {
             </div>
 
         </div>
+
     )
 }
 

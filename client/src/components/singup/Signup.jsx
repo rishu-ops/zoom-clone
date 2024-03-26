@@ -1,6 +1,5 @@
 import { useState } from "react";
-import banner from "../../assets/banner.png";
-import * as yup from "yup";
+import { bannersingupImage } from "../../assets";
 
 function Signup() {
   const [user, setUser] = useState({
@@ -9,6 +8,7 @@ function Signup() {
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -18,9 +18,9 @@ function Signup() {
     console.log("Form Submitted", user);
   };
   return (
-    <div className=" lg:flex h-screen items-center lg:mx-16">
-      <div className=" md:w-1/3 hidden lg:block">
-        <img src={banner} alt="banner" className=" xl:ml-36 ml-24" />
+    <div className=" md:flex h-screen items-center">
+      <div className=" md:w-1/2 p-16">
+        <img src={bannersingupImage} alt="banner" />
       </div>
       <div className=" lg:w-2/3 text-center p-3">
         <h1 className=" text-3x md:text-4xl mb-16 font-extrabold">
