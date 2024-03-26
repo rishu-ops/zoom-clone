@@ -1,9 +1,11 @@
-import banner from "../../assets/banner.png";
+import { bannersingupImage } from "../../assets";
+
+
 function Signup() {
   return (
     <div className=" md:flex h-screen items-center">
       <div className=" md:w-1/2 p-16">
-        <img src={banner} alt="banner" />
+        <img src={bannersingupImage} alt="banner" />
       </div>
       <div className=" md:w-1/2 text-center p-3">
         <h1 className=" text-3xl md:text-5xl font-semibold my-5">Create Your Account</h1>
