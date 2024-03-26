@@ -23,10 +23,10 @@ function Signup() {
         <img src={banner} alt="banner" className=" xl:ml-36 ml-24" />
       </div>
       <div className=" lg:w-2/3 text-center p-3">
-        <h1 className=" text-3x md:text-4xl font-semibold my-8">
+        <h1 className=" text-3x md:text-4xl mb-16 font-extrabold">
           Create Your Account
         </h1>
-        <p>Enter your full name and password</p>
+        <p className=" mb-8">Enter your full name and password</p>
         <form
           className=" lg:w-1/2 lg:max-w-80 max-w-96 mx-auto flex flex-col"
           onSubmit={handleSubmit}
