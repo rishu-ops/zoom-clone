@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { bannersingupImage } from "../../assets";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Signup() {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+     
   const [user, setUser] = useState({
     fName: "",
     lName: "",
@@ -9,13 +15,43 @@ function Signup() {
     password: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange =(e) => {
+
     setUser({ ...user, [e.target.name]: e.target.value });
+
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async(e) => {
+
     e.preventDefault();
-    console.log("Form Submitted", user);
+
+    try {
+      const res = await axios.post("http://localhost:4000/signup", {
+        fName: user.fName,
+        lName: user.lName,
+        email: user.email,
+        password: user.password  ,
+      });
+
+      if (res && res.data.success) {
+        alert(res.data && res.data.message);
+        
+        // setAuth({
+        //   ...auth,
+        //   user: res.data.user,
+        //   token: res.data.token,
+        // });
+        // localStorage.setItem("auth", JSON.stringify(res.data));
+        navigate(location.state || "/signin");
+
+      } else {
+        alert(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    }
+
   };
   return (
     <div className=" md:flex h-screen items-center">

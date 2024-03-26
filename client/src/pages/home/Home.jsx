@@ -9,11 +9,14 @@ import {
 
 import { motion } from "framer-motion";
 
+
 const Home = () => {
 
     return (
 
         <div className='w-full h-auto flex-col mt-14'>
+
+
             <div className="lg:flex md:flex ">
                 <div className=" lg:w-[60%] md:w-[60%] p-16 flex flex-col  justify-center">
 

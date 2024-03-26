@@ -11,6 +11,7 @@ exports.userRegister = async (req, res) => {
     if (userExist) {
       return res.status(409).send({
         message: "This email is already exist",
+        success: false,
       });
     }
     // Hashing the Password
@@ -25,18 +26,21 @@ exports.userRegister = async (req, res) => {
       .then((data) => {
         res.status(201).send({
           message: "User registered successfully",
+          success: true, 
           user: data,
         });
       })
       .catch((error) => {
         res.status(400).send({
           message: "error while creating user",
+          success: false,
           error: error,
         });
       });
   } catch (error) {
     res.status(500).send({
       message: "Internal server error",
+      success: false,
       Error: error.message,
     });
   }
@@ -61,20 +65,25 @@ exports.userSignIn = async (req, res) => {
         secure: true,
         sameSite: "none",
         expires: new Date(Date.now() + 86400000),
+
       });
       res.status(200).send({
         message: "User logged in successfully",
+        success: true ,
         user: userExist,
+        token ,
       });
     } else {
       return res.status(401).send({
         message: "Incorrect password",
+        success: false,
       });
     }
   } catch (error) {
     res.status(500).send({
       message: "Internal server error",
       Error: error.message,
+      success: false,
     });
   }
 };
@@ -84,10 +93,12 @@ exports.userLogout = async (req, res) => {
     await res.clearCookie("accessToken");
     res.status(200).send({
       message: "User logged out",
+      success: true,
     });
   } catch (error) {
     res.status(500).send({
       message: "Internal server error",
+      success: false,
       Error: error.message,
     });
   }
