@@ -7,6 +7,7 @@ import Signin from './components/singin/Signin.jsx';
 import Signup from './components/singup/Signup.jsx';
 import Navbar from './components/navbar/Navbar.jsx';
 import { AuthProvider } from './contex/Auth.jsx'
+import Sidebar from './components/sidebar/Sidebar.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
@@ -16,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
     <Routes>
       
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Sidebar />} />
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
 
