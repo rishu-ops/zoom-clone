@@ -12,7 +12,7 @@ const Navbar = () => {
          </Link>
        </div>
 
-       <div className='flex gap-5 text-xl font-semibold '>
+       <div className='lg:flex md:flex gap-5 text-xl font-semibold hidden'>
         <button className='border border-blue-600  rounded-2xl pl-2 pr-2 text-blue-700 '> Contact Sales </button>
         <button className='bg-blue-600 hover:bg-blue-700 text-white  pl-4 pr-4 w-[120px] rounded-2xl flex items-center justify-center'> 
         <Link to={'/signup'}> Sing Up </Link>
