@@ -4,10 +4,9 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Signup() {
-
   const navigate = useNavigate();
   const location = useLocation();
-     
+
   const [user, setUser] = useState({
     fName: "",
     lName: "",
@@ -15,14 +14,11 @@ function Signup() {
     password: "",
   });
 
-  const handleChange =(e) => {
-
+  const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-
   };
 
-  const handleSubmit =  async(e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -30,20 +26,12 @@ function Signup() {
         fName: user.fName,
         lName: user.lName,
         email: user.email,
-        password: user.password  ,
+        password: user.password,
       });
 
       if (res && res.data.success) {
         alert(res.data && res.data.message);
-        
-        // setAuth({
-        //   ...auth,
-        //   user: res.data.user,
-        //   token: res.data.token,
-        // });
-        // localStorage.setItem("auth", JSON.stringify(res.data));
         navigate(location.state || "/signin");
-
       } else {
         alert(res.data.message);
       }
@@ -51,20 +39,19 @@ function Signup() {
       console.log(error);
       alert("Something went wrong");
     }
-
   };
   return (
     <div className=" md:flex h-screen items-center">
       <div className=" md:w-1/2 p-16">
-        <img src={bannersingupImage} alt="banner" />
+        <img src={bannersingupImage} className=" ml-24" alt="banner" />
       </div>
-      <div className=" lg:w-2/3 text-center p-3">
+      <div className=" lg:w-2/3 text-center p-3 lg:mr-24">
         <h1 className=" text-3x md:text-4xl mb-16 font-extrabold">
           Create Your Account
         </h1>
         <p className=" mb-8">Enter your full name and password</p>
         <form
-          className=" lg:w-1/2 lg:max-w-80 max-w-96 mx-auto flex flex-col"
+          className=" lg:w-1/2 lg:max-w-80 max-w-96 mx-auto flex flex-col "
           onSubmit={handleSubmit}
         >
           <input
