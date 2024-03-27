@@ -9,6 +9,7 @@ import Homeimage6 from './homepage/Homeimage6.png';
 import Homeimage7 from './homepage/Homeimage7.png';
 import Homeimage8 from './homepage/Homeimage8.png';
 import Homeimage9 from './homepage/Homeimage9.png';
+import dropdownImage from './homepage/dropdownImage.png';
 
 export {
     bannersinginImage ,
@@ -22,5 +23,6 @@ export {
     Homeimage7 ,
     Homeimage8 ,
     Homeimage9 ,
+    dropdownImage ,
 
 }

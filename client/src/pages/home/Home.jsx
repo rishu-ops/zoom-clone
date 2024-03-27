@@ -14,7 +14,7 @@ const Home = () => {
 
     return (
 
-        <div className='w-full h-auto flex-col mt-14'>
+        <div className='w-full h-auto flex-col '>
 
 
             <div className="lg:flex md:flex ">

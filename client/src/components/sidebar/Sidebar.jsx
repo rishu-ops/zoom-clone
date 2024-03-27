@@ -3,7 +3,7 @@ import React from 'react';
 const Sidebar = () => {
   return (
     
-      <div className='w-[300px] bg-[#f7f7fa] h-screen overflow-x-scroll p-3 lg:block md:block   hidden'>
+      <div className='w-[100%] bg-[#f7f7fa] lg:h-screen md:h-screen h-[210px] overflow-y-scroll  p-3 '>
        
         <h1 className='p-2 font-semibold'> PERSONAL </h1>
         <div className="pl-4 flex flex-col gap-2 font-semibold pb-4 ">

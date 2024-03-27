@@ -49,7 +49,10 @@ const Signin = () => {
   };
 
   return (
-    <div className="w-full h-screen flex lg:flex-row flex-col md:flex-row mt-10 ">
+
+
+    <div className="w-full h-screen flex lg:flex-row flex-col md:flex-row  ">
+
       <div className=" lg:w-[45%] md:-w-[45%] w-100% flex justify-center items-center">
         <img
           className="lg:h-[300px] md:h-[300px] h-[200px]"

@@ -1,20 +1,33 @@
-import schedule from "../assets/schedule.svg";
-import host from "../assets/host.svg";
-import join from "../assets/join.svg";
-import unknown from "../assets/unknown.png";
-import logo from "../assets/logo.svg";
-import tick from "../assets/tick.svg";
+import schedule from "../../assets/schedule.svg";
+import host from "../../assets/host.svg";
+import join from "../../assets/join.svg";
+import unknown from "../../assets/unknown.png";
+import logo from "../../assets/logo.svg";
+import tick from "../../assets/tick.svg";
+import Sidebar from "../sidebar/Sidebar";
+import { useAuth } from "../../contex/Auth";
 
 function Dashboard() {
+  
+  const [auth, setAuth] = useAuth();
+  
   return (
-    <div className="flex justify-between p-5 w-2/3 gap-5 float-right">
-      <div className="w-2/3">
+
+<div className="w-full lg:flex md:flex ">
+  
+  <div className="lg:w-[20%] md:w-[20%] ">
+    <Sidebar/>
+    </div>
+
+    <div className="lg:flex md:flex  justify-between p-5 lg:w-3/3 md:w-3/3  gap-5 float-right ">
+
+      <div className="w-3/3  ">
         <div className="shadow-md border rounded-lg p-5">
           <div className="flex justify-between items-start mb-4 ">
             <div className="flex justify-center items-start gap-3">
               <img src={unknown} className=" w-16 rounded-xl" alt="unknown" />
               <div>
-                <h1 className=" text-2xl font-bold">Anil Kokkul</h1>
+                <h1 className=" text-2xl font-bold">{auth.user.fName} {auth.user.lName} </h1>
                 <p>You are currently on a Basic Plan (Free)</p>
               </div>
             </div>
@@ -60,11 +73,12 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="w-1/3">
+
+      <div className="lg:w-1/3 md:w-2/3 ">
         <div className="flex gap-4 justify-evenly p-3 border rounded-lg shadow-md">
           <div className=" flex flex-col justify-center items-center">
             <img src={schedule} alt="schedule" />
-            <h1 className=" text-sm mt-1 font-semibold">Schedule</h1>
+            <h1 className="  text-sm mt-1 font-semibold">Schedule</h1>
           </div>
           <div className=" flex flex-col justify-center items-center">
             <img src={join} alt="schedule" />
@@ -91,7 +105,7 @@ function Dashboard() {
           <h1 className=" text-2xl font-bold">
             Do more with Zoom Workplace Pro
           </h1>
-          <ul className=" mt-2">
+          <ul className=" mt-2 lg:text-lg text-sm ">
             <li className="flex justify-start items-center gap-2">
               <img src={tick} alt="tick" />
               No 40-minute limit
@@ -116,10 +130,11 @@ function Dashboard() {
               Access to game changing add-ons
             </li>
           </ul>
-          <div className="">Upgrade to Pro</div>
+          <div className="lg:text-lg text-sm">Upgrade to Pro</div>
           <div>View all Plans </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

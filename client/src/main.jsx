@@ -7,7 +7,7 @@ import Signin from './components/singin/Signin.jsx';
 import Signup from './components/singup/Signup.jsx';
 import Navbar from './components/navbar/Navbar.jsx';
 import { AuthProvider } from './contex/Auth.jsx'
-import Dashboard from './components/Dashboard.jsx';
+import Dashboard from './components/dashboard/Dashboard.jsx';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
