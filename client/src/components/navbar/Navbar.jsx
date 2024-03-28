@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="flex  justify-between p-6 sticky top-0 left-0 right-0 bg-white z-10 ">
+      <div className="flex justify-between p-6 sticky top-0 left-0 right-0 bg-white z-10 ">
         <div>
           <Link to="/">
             <img src={Homeimage9} alt="" className="h-10" />

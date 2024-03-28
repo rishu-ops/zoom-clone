@@ -6,11 +6,12 @@ import logo from "../../assets/logo.svg";
 import tick from "../../assets/tick.svg";
 import Sidebar from "../sidebar/Sidebar";
 import { useAuth } from "../../contex/Auth";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   
   const [auth, setAuth] = useAuth();
-  
+  const navigate = useNavigate()
   return (
 
 <div className="w-full lg:flex md:flex ">
@@ -81,11 +82,20 @@ function Dashboard() {
             <h1 className="  text-sm mt-1 font-semibold">Schedule</h1>
           </div>
           <div className=" flex flex-col justify-center items-center">
-            <img src={join} alt="schedule" />
+            <img src={join} alt="schedule" 
+                  className="cursor-pointer"
+                  onClick={() => navigate('/join')}
+            />
             <h1 className=" text-sm mt-1 font-semibold">Join</h1>
           </div>
           <div className=" flex flex-col justify-center items-center">
-            <img src={host} alt="schedule" />
+          <img 
+      src={host} // Assuming 'host' is the path to your image
+      alt="schedule" 
+      className="cursor-pointer"
+      onClick={() => navigate('/host')}
+    />
+  
             <h1 className=" text-sm mt-1 font-semibold">Host</h1>
           </div>
         </div>
