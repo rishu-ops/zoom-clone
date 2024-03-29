@@ -47,13 +47,14 @@ io.on('connection' , (socket) => {
 
    socket.on('call-accepted' , (data) => {
      
-    const [emailId , ans ] = data ;
+    const { emailId , ans } = data ;
      const socketId  = socketToEmailMapping.get(emailId);
-     socket.to(socketId).emit('call-accepted' , { ans } )
+     socket.to(socketId).emit('call-accepted' , { ans} )
 
    })
 
 });
+
 
 const cors = require('cors');
 

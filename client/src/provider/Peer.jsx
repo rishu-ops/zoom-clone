@@ -27,7 +27,7 @@ export const PeerProvider = ({ children }) => {
         return offer;
     }
 
-    const createAnswer = async (after) => {
+    const createAnswer = async(offer) => {
         await peer.setRemoteDescription(offer);
         const answer = await peer.createAnswer();
         await peer.setLocalDescription(answer) ;
@@ -39,19 +39,26 @@ export const PeerProvider = ({ children }) => {
         await peer.setRemoteDescription(ans);
     }
 
-     const sendStream = async( stream ) => {
-          const tracks = stream.getTracks();
+const sendStream = async (stream) => {
+    const tracks = stream.getTracks();
 
-          for ( const track of tracks  ) {
-             peer.addTrack(track , stream);
+    for (const track of tracks) {
+        // Check if the track is already added
+        const senders = peer.getSenders();
+        const isTrackAdded = senders.some(sender => sender.track === track);
 
-          }
-     }
+        // Add the track only if it's not already added
+        if (!isTrackAdded) {
+            peer.addTrack(track, stream);
+        }
+    }
+};
+
 
      const handleTrackEvent = useCallback((ev) => {
         const streams = ev.streams ;
         setRemoteStream(streams[0])
-     })
+     } , [peer] )
 
      useEffect(() => {
          peer.addEventListener('track' , handleTrackEvent )

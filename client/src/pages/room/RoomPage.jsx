@@ -56,7 +56,7 @@ const RoomPage = () => {
 
          
      const handleNegotiation =  useCallback(() => {
-       const localOffer = peer.localDescription;
+       const localOffer = peer.localDescription ;
 
       socket.emit('call-user' ,  {
         emailId : remoteEmailId , offer : localOffer 
@@ -86,7 +86,7 @@ const RoomPage = () => {
       peer.removeEventListener('negotiationneeded' , handleNegotiation)
  
      )
-  } , [] )
+  } , [ ] )
   
 useEffect(() => {
   
@@ -98,8 +98,10 @@ useEffect(() => {
     <div>
       <h1>room page </h1>
       <button onClick={ e => sendStream(mystream)}> Send my video </button>
-    <ReactPlayer url={mystream} playing />
-    <ReactPlayer url={remoteStream} playing />
+      
+      <ReactPlayer url={mystream} playing muted />
+      <ReactPlayer url={remoteStream} playing muted />
+
     </div>
   )
 }
