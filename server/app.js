@@ -8,9 +8,7 @@ require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
 const io = new Server({
-  
   cors : true ,
-
 });
 const app = express();
 
