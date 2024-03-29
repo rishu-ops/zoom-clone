@@ -28,7 +28,7 @@ function Dashboard() {
             <div className="flex justify-center items-start gap-3">
               <img src={unknown} className=" w-16 rounded-xl" alt="unknown" />
               <div>
-                <h1 className=" text-2xl font-bold">{auth.user.fName} {auth.user.lName} </h1>
+                <h1 className=" text-2xl font-bold">{auth.user?.fName} {auth.user?.lName} </h1>
                 <p>You are currently on a Basic Plan (Free)</p>
               </div>
             </div>
