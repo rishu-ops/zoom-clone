@@ -2,6 +2,7 @@ import { useState } from "react";
 import { bannersingupImage } from "../../assets";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { errorToast, successToast } from "../../services/toasts";
 
 function Signup() {
   const navigate = useNavigate();
@@ -30,14 +31,13 @@ function Signup() {
       });
 
       if (res && res.data.success) {
-        alert(res.data && res.data.message);
+        successToast(res.data && res.data.message);
         navigate(location.state || "/signin");
       } else {
-        alert(res.data.message);
+        errorToast(res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong");
+      errorToast("Something went wrong");
     }
   };
   return (
