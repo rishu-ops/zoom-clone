@@ -7,54 +7,46 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const io = new Server({
-  
-  cors : true ,
-
+const io = new Server(8000, {
+  cors: true,
 });
 const app = express();
 
 app.use(bodyPaser.json());
 
-const emailToScoketMaping = new Map();
-const socketToEmailMapping = new Map();
+const emailToSocketIdMap = new Map();
+const socketidToEmailMap = new Map();
 
-io.on('connection' , (socket) => {
-  
-  console.log("new connection");
+io.on("connection", (socket) => {
 
-   socket.on('join-room' , data => {
-     const { roomId , emailId  } = data;
-     
-     console.log('user' , emailId , 'joined' , roomId);
-
-    emailToScoketMaping.set(emailId , socket.id );
-    socketToEmailMapping.set(socket.id , emailId );
-
+  console.log(`Socket Connected`, socket.id);
+  socket.on("room:join", (data) => {
+    const { emailId, roomId } = data;
+    emailToSocketIdMap.set(emailId, socket.id);
+    socketidToEmailMap.set(socket.id, emailId );
+    io.to(roomId).emit("user:joined", { emailId , id: socket.id });
     socket.join(roomId);
-    socket.emit('joined-room' , {roomId})
-    socket.broadcast.to(roomId).emit("user-joined" , { emailId })
+    io.to(socket.id).emit("room:join", data);
+  });
 
-   })
+  socket.on("user:call", ({ to, offer }) => {
+    io.to(to).emit("incomming:call", { from: socket.id, offer });
+  });
 
-   socket.on ('call-user' , data => {
-      const { emailId , offer } = data ;
-      const fromEmail  =  socketToEmailMapping.get(socket.id);
-      const socketId = emailToScoketMaping.get(emailId)
-      socket.to(socketId).emit('incoming-call' , {  from : fromEmail  , offer } )
+  socket.on("call:accepted", ({ to, ans }) => {
+    io.to(to).emit("call:accepted", { from: socket.id, ans });
+  });
 
-   })
+  socket.on("peer:nego:needed", ({ to, offer }) => {
+    console.log("peer:nego:needed", offer);
+    io.to(to).emit("peer:nego:needed", { from: socket.id, offer });
+  });
 
-   socket.on('call-accepted' , (data) => {
-     
-    const { emailId , ans } = data ;
-     const socketId  = socketToEmailMapping.get(emailId);
-     socket.to(socketId).emit('call-accepted' , { ans} )
-
-   })
-
+  socket.on("peer:nego:done", ({ to, ans }) => {
+    console.log("peer:nego:done", ans);
+    io.to(to).emit("peer:nego:final", { from: socket.id, ans });
+  });
 });
-
 
 const cors = require('cors');
 
@@ -71,9 +63,10 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 4000;
 
- app.listen(PORT, () =>
+app.listen(PORT, () =>
 
   console.log(`server is running on port ${PORT}`)
+  
 );
 
-io.listen( 8001 )
+io.listen(8001)

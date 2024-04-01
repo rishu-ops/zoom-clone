@@ -93,7 +93,7 @@ function Dashboard() {
       src={host} // Assuming 'host' is the path to your image
       alt="schedule" 
       className="cursor-pointer"
-      onClick={() => navigate('/host')}
+      onClick={() => navigate('/launch')}
     />
   
             <h1 className=" text-sm mt-1 font-semibold">Host</h1>
