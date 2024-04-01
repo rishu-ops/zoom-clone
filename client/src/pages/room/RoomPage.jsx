@@ -127,73 +127,77 @@ const RoomPage = () => {
 
   return (
     <div className="bg-black w-full h-[88vh] text-white flex flex-col text-center items-center ">
-     
+
       <h4 className="pt-2 text-3xl">{remoteSocketId ? "Zoom Meeting " : "No one in room"}</h4>
       <div className="flex  gap-6 w-full items-center justify-center h-[500px] lg:p-0 p-5">
-      {myStream && (
-        <div className="flex flex-col lg:h-[300px] md:h-[200px] h-[150px]">
-          <h1>My Stream</h1>
-          {videoVisible && (
-          <ReactPlayer
-            playing
-            muted
-            height="100%"
-            width="100%"
-            url={myStream}
-          />
-          )}
-        </div>
-      )}
-      {remoteStream && (
-        <div className="flex flex-col lg:h-[300px] md:h-[200px] h-[150px]">
-          <h1>Remote Stream</h1>
-          <ReactPlayer
-  playing
-  muted={mutedAudio} // Set muted attribute based on mutedAudio variable
-  height="100%"
-  width="100%"
-  url={remoteStream}
-/>
+        {myStream && (
+          <div className="flex flex-col lg:h-[300px] md:h-[200px] h-[150px]">
+            <h1>My Stream</h1>
+            {videoVisible && (
+              <ReactPlayer
+                playing
+                muted
+                height="100%"
+                width="100%"
+                url={myStream}
+              />
+            )}
+          </div>
+        )}
+        {remoteStream && (
+          <div className="flex flex-col lg:h-[300px] md:h-[200px] h-[150px]">
+            <h1>Remote Stream</h1>
+            <ReactPlayer
+              playing
+              muted={mutedAudio} // Set muted attribute based on mutedAudio variable
+              height="100%"
+              width="100%"
+              url={remoteStream}
+            />
 
-        </div>
-      )}
+          </div>
+        )}
       </div>
 
       <div className="flex bg-[#0e0e0e] w-full p-4  items-center justify-center lg:gap-8 gap-3 flex-wrap">
-      
-      {myStream && <button 
-      className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
-      onClick={sendStreams}> 
-      Send Stream
-      </button>}
 
-      {remoteSocketId && <button 
-      className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
-      onClick={handleCallUser}>
-        Call
+        {myStream && <button
+          className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
+          onClick={sendStreams}>
+          Send Stream
         </button>}
+
+        {remoteSocketId && <button
+          className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
+          onClick={handleCallUser}>
+          Call
+        </button>}
+
+        {remoteSocketId &&
+          <button
+            className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
+            onClick={() => setMuted(!mutedAudio)}>
+            Muted
+          </button>
+        }
         
-        { remoteSocketId && 
-      <button 
-      className="hover:bg-slate-700 rounded-lg p-2 bg-slate-900"
-      onClick={() => setMuted(!mutedAudio)}>
-        Muted
-      </button>
-        } 
+        {remoteSocketId &&
 
-<button onClick={toggleVideoVisibility}
-      className="bg-slate-900 hover:bg-slate-700 rounded-lg p-2 "
->
-  
-        {videoVisible ? 'Hide Video' : 'Show Video'}
-      </button>
+          <button onClick={toggleVideoVisibility}
+            className="bg-slate-900 hover:bg-slate-700 rounded-lg p-2 "
+          >
 
-      { remoteSocketId && 
-      <button
-      className="hover:bg-slate-700 bg-slate-900 rounded-lg p-2"
-      
-      onClick={handleEndCall}> End </button>
-        } 
+            {videoVisible ? 'Hide Video' : 'Show Video'}
+          </button>
+
+        }
+
+        {remoteSocketId &&
+          <button
+            className="hover:bg-slate-700 bg-slate-900 rounded-lg p-2"
+
+            onClick={handleEndCall}> End </button>
+        }
       </div>
 
     </div>
