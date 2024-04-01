@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { bannersinginImage } from "../../assets";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contex/Auth";
+import { errorToast, successToast } from "../../services/toasts";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Signin = () => {
       });
 
       if (res && res.data.success) {
-        alert(res.data && res.data.message);
+        successToast(res.data && res.data.message);
 
         setAuth({
           ...auth,
@@ -40,19 +41,15 @@ const Signin = () => {
 
         navigate(location.state || "/dashboard");
       } else {
-        alert(res.data.message);
+        errorToast(res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong");
+      errorToast("Something went wrong");
     }
   };
 
   return (
-
-
     <div className="w-full h-screen flex lg:flex-row flex-col md:flex-row  ">
-
       <div className=" lg:w-[45%] md:-w-[45%] w-100% flex justify-center items-center">
         <img
           className="lg:h-[300px] md:h-[300px] h-[200px]"

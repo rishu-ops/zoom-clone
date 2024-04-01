@@ -9,6 +9,7 @@ const userRoutes = require("./routes/user.routes");
 
 const io = new Server(8000, {
   cors: true,
+
 });
 const app = express();
 
