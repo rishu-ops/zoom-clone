@@ -7,10 +7,10 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const io = new Server(8000, {
+const io = new Server(10000, {
   cors: true,
-
 });
+
 const app = express();
 
 app.use(bodyPaser.json());

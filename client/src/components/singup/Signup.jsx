@@ -23,7 +23,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:4000/signup", {
+      const res = await axios.post("https://zoom-clone-p18x.onrender.com/signup", {
         fName: user.fName,
         lName: user.lName,
         email: user.email,

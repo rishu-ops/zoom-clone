@@ -23,7 +23,7 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:4000/signin", {
+      const res = await axios.post("https://zoom-clone-p18x.onrender.com/signin", {
         email: user.email,
         password: user.password,
       });

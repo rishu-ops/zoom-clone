@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/logout");
+      const res = await axios.get("https://zoom-clone-p18x.onrender.com/logout");
       setAuth({
         ...auth,
         user: null,
