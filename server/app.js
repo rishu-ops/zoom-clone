@@ -7,7 +7,7 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const io = new Server('https://zoom-clone-p18x.onrender.com', {
+const io = new Server('8000', {
   cors: true,
 });
 
