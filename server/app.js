@@ -7,10 +7,13 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const io = new Server(8000, {
-  cors: true,
+const PORT2 = process.env.PORT2 || 10000;
 
+const io = new Server(PORT2 , {
+  cors: true,
 });
+
+
 const app = express();
 
 app.use(bodyPaser.json());
@@ -70,4 +73,9 @@ app.listen(PORT, () =>
 
 );
 
-io.listen(8001)
+io.listen(8001 , () => { 
+ 
+  console.log('running');
+
+} 
+)
