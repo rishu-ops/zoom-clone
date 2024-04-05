@@ -7,14 +7,25 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const PORT2 = process.env.PORT2 || 8000;
-
-const io = new Server(PORT2 , {
-  cors: true,
-});
-
 
 const app = express();
+
+const io = new Server( 8000 , {
+  cors: {
+  origin : "http://localhost:5174"  ,
+  methods: ["GET", "POST"] ,
+  credentials: true
+  } 
+
+});
+
+const cors = require('cors');
+
+db();
+app.use(express.json());
+app.use(cors())
+app.use(userRoutes);
+
 
 app.use(bodyPaser.json());
 
@@ -52,12 +63,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const cors = require('cors');
 
-db();
-app.use(express.json());
-app.use(cors())
-app.use(userRoutes);
 
 app.get("/", (req, res) => {
 
