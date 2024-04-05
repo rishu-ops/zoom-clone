@@ -7,7 +7,7 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const PORT2 = process.env.PORT2 || 10000;
+const PORT2 = process.env.PORT2 || 8000;
 
 const io = new Server(PORT2 , {
   cors: true,
