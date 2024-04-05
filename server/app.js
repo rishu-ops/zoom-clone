@@ -7,10 +7,10 @@ const { db } = require("./db/db.connect");
 require("dotenv").config();
 const userRoutes = require("./routes/user.routes");
 
-const io = new Server('8000', {
+const io = new Server(8000, {
   cors: true,
-});
 
+});
 const app = express();
 
 app.use(bodyPaser.json());
@@ -70,15 +70,4 @@ app.listen(PORT, () =>
 
 );
 
-const PORT2 = process.env.PORT || 8001;
-
-io.listen(PORT2, () => {
- 
-  try {
-    console.log("io is ruuning on port 8001");
-    
-  } catch (error) {
-    console.log(error);
-  }
-
-})
+io.listen(8001)
