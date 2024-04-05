@@ -70,4 +70,8 @@ app.listen(PORT, () =>
 
 );
 
-io.listen(8001)
+io.listen(8001 , () => {
+
+   console.log("io is ruuning on port 8001");
+   
+})
