@@ -24,8 +24,8 @@ io.on("connection", (socket) => {
   socket.on("room:join", (data) => {
     const { emailId, roomId } = data;
     emailToSocketIdMap.set(emailId, socket.id);
-    socketidToEmailMap.set(socket.id, emailId );
-    io.to(roomId).emit("user:joined", { emailId , id: socket.id });
+    socketidToEmailMap.set(socket.id, emailId);
+    io.to(roomId).emit("user:joined", { emailId, id: socket.id });
     socket.join(roomId);
     io.to(socket.id).emit("room:join", data);
   });
@@ -67,7 +67,7 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () =>
 
   console.log(`server is running on port ${PORT}`)
-  
+
 );
 
 io.listen(8001)
