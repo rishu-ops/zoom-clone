@@ -70,8 +70,10 @@ app.listen(PORT, () =>
 
 );
 
-io.listen(8001 , () => {
+const PORT2 = process.env.PORT || 8000;
 
+io.listen(PORT2, () => {
+ 
   try {
     console.log("io is ruuning on port 8001");
     
